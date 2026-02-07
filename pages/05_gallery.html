@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Impact | Gallery</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .gallery-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            margin-top: 40px;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 14px;
+        }
+
+        .gallery-card h4 {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            color: var(--accent-soft);
+        }
+
+        .gallery-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-top: 56.25%;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="../index.html" class="nav-logo">
+        <i data-lucide="gamepad-2" style="color: var(--accent-soft); margin-right: 10px;"></i>
+        <h1>Impact of Gaming</h1>
+    </a>
+    <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="02_research.html">Research</a></li>
+        <li><a href="03_awareness.html">Tips</a></li>
+        <li><a href="04_survey.html">Survey</a></li>
+        <li><a href="05_gallery.html" class="active">Gallery</a></li>
+        <li><a href="06_chatbot.html">AI Chat</a></li>
+        <li><a href="07_forum.html">Forum</a></li>
+        <li><a href="08_resources.html">Resources</a></li>
+        <li><a href="09_contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="section" style="margin-top:100px;">
+    <h3>Visual Insights</h3>
+    <p style="text-align:center; color:var(--text-muted); max-width:700px; margin:0 auto;">
+        A visual exploration of how gaming influences youth behavior, lifestyle balance,
+        mental focus, and social interaction.
+    </p>
+
+    <div class="gallery-grid">
+
+        <div class="card gallery-card">
+            <img src="../assets/ExcessiveScreenTime.jpg" alt="Excessive Screen Time">
+            <h4>Excessive Screen Time</h4>
+            <p>Long gaming hours can increase eye strain, fatigue, and disrupt sleep cycles among students.</p>
+        </div>
+
+        <div class="card gallery-card">
+            <img src="../assets/balancedLifestyle.webp" alt="Balanced Lifestyle">
+            <h4>Balanced Lifestyle</h4>
+            <p>Healthy gaming habits include balancing academics, physical activity, and leisure.</p>
+        </div>
+
+        <div class="card gallery-card">
+            <img src="../assets/fatigue.jpg" alt="Mental Focus">
+            <h4>Mental Focus & Fatigue</h4>
+            <p>Excessive gaming may reduce attention span when it interferes with rest and routine.</p>
+        </div>
+
+        <div class="card gallery-card">
+            <img src="../assets/positive-gaming.jpg" alt="Positive Gaming">
+            <h4>Positive Aspects of Gaming</h4>
+            <p>Moderate gaming can enhance problem-solving, teamwork, and strategic thinking.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section dark">
+    <h3>Awareness Video</h3>
+
+    <div class="card">
+        <div class="video-wrapper">
+            <iframe 
+                src="https://www.youtube.com/embed/_-KV0l6o5FE?si=FTwol-yFzqzJsBTD"
+                title="Impact of Gaming on Youth"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <p style="margin-top:15px; font-size:0.85rem; color:var(--text-muted); text-align:center;">
+            This educational video explains the psychological, social, and academic effects
+            of gaming on young individuals in a balanced manner.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Impact of Gaming on Youth Initiative</p>
+</footer>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
