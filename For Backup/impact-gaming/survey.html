@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take the Survey | Impact of Gaming</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html" class="nav-logo" style="display: flex; align-items: center; text-decoration: none;">
+        <i data-lucide="gamepad-2" style="width: 30px; height: 30px; color: var(--accent-soft);"></i>
+        <h1 style="margin-left: 10px; color: white;">Impact of Gaming</h1>
+    </a>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="awareness.html">Awareness</a></li>
+        <li><a href="survey.html" class="active">Survey</a></li>
+    </ul>
+</nav>
+
+<section class="section" style="margin-top: 80px;">
+    <div style="text-align: center; max-width: 700px; margin: 0 auto 50px;">
+        <h3>Player Profile Survey</h3>
+        <p style="color: var(--text-muted);">Help us gather real-time data on gaming habits. Your input is vital for our 2026 report.</p>
+    </div>
+
+    <div class="form-container">
+        <form id="gamingSurvey" class="card">
+            <div class="form-group">
+                <label>1. How many hours do you game on average per day?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="hours" value="0-1"> 0-1 Hour</label>
+                    <label class="radio-option"><input type="radio" name="hours" value="2-3"> 2-3 Hours</label>
+                    <label class="radio-option"><input type="radio" name="hours" value="4+"> 4+ Hours</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>2. Which genre do you play the most?</label>
+                <select class="custom-select">
+                    <option>Battle Royale (PUBG/FreeFire)</option>
+                    <option>Competitive FPS (Valorant/CS)</option>
+                    <option>Open World (Genshin/GTA)</option>
+                    <option>Strategy/MOBA (LoL/Dota)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>3. Do you feel gaming interferes with your sleep?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="sleep" value="never"> Never</label>
+                    <label class="radio-option"><input type="radio" name="sleep" value="sometimes"> Sometimes</label>
+                    <label class="radio-option"><input type="radio" name="sleep" value="often"> Often</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>4. Briefly describe how gaming affects your mood:</label>
+                <textarea placeholder="e.g. It helps me relax but sometimes makes me frustrated..."></textarea>
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%;">Submit Responses</button>
+        </form>
+    </div>
+</section>
+<script src="./js/script.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
