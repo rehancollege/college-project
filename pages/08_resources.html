@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Impact | Resources</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Resource Specific Styles */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .resource-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            border-color: var(--accent-soft);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .category-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-soft);
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .resource-card h4 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+
+        .resource-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.5;
+        }
+
+        /* Button Styling */
+        .resource-link {
+            text-decoration: none;
+            color: white;
+            background: var(--accent);
+            padding: 12px 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: 0.3s;
+            display: block; /* Ensures button fills width if needed */
+        }
+
+        .resource-link:hover {
+            background: var(--accent-soft);
+            color: #020617; /* Contrast color on hover */
+            transform: scale(1.02);
+        }
+
+        .helpline-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(34, 211, 238, 0.1));
+            border: 1px dashed var(--accent-soft);
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="../index.html" class="nav-logo">
+        <i data-lucide="gamepad-2" style="color: var(--accent-soft); margin-right: 10px;"></i>
+        <h1>Impact of Gaming</h1>
+    </a>
+    <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="02_research.html">Research</a></li>
+        <li><a href="03_awareness.html">Tips</a></li>
+        <li><a href="04_survey.html">Survey</a></li>
+        <li><a href="05_gallery.html">Gallery</a></li>
+        <li><a href="06_chatbot.html">AI Chat</a></li>
+        <li><a href="07_forum.html">Forum</a></li>
+        <li><a href="08_resources.html" class="active">Resources</a></li>
+        <li><a href="09_contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="section" style="margin-top: 100px;">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h3 style="color: var(--accent-soft); font-size: 2.5rem;">Support & Education</h3>
+        <p style="color: var(--text-muted);">Access verified government portals, professional helplines, and educational materials.</p>
+    </div>
+
+    <h2 style="font-size: 1.5rem; margin-bottom: 20px;"><i data-lucide="landmark" style="vertical-align: middle; margin-right: 10px;"></i>Government Portals</h2>
+    <div class="resource-grid">
+        <div class="resource-card">
+            <span class="category-tag">Safety</span>
+            <h4>CyberSafe India</h4>
+            <p>The Ministry of Home Affairs initiative to report cyber crimes and learn about digital safety protocols.</p>
+            <a href="https://www.cybercrime.gov.in" target="_blank" class="resource-link">Visit Official Portal</a>
+        </div>
+        <div class="resource-card">
+            <span class="category-tag">Education</span>
+            <h4>National Digital Library</h4>
+            <p>Access millions of academic books and research papers provided by the Ministry of Education.</p>
+            <a href="https://ndl.iitkgp.ac.in/" target="_blank" class="resource-link">Open Library</a>
+        </div>
+    </div>
+
+    <h2 style="font-size: 1.5rem; margin: 50px 0 20px;"><i data-lucide="phone-forwarded" style="vertical-align: middle; margin-right: 10px;"></i>Helplines & Support</h2>
+    <div class="resource-grid">
+        <div class="resource-card helpline-box">
+            <span class="category-tag">24/7 Mental Health</span>
+            <h4>Tele-MANAS</h4>
+            <p>Free, confidential mental health support provided by the Government of India. Available 24/7.</p>
+            <a href="tel:14416" class="resource-link">Call 14416 Now</a>
+        </div>
+        <div class="resource-card helpline-box">
+            <span class="category-tag">Youth Safety</span>
+            <h4>Childline India</h4>
+            <p>Emergency assistance for children and teenagers facing online harassment or addiction issues.</p>
+            <a href="tel:1098" class="resource-link">Call 1098 Now</a>
+        </div>
+    </div>
+
+    <h2 style="font-size: 1.5rem; margin: 50px 0 20px;"><i data-lucide="book-open" style="vertical-align: middle; margin-right: 10px;"></i>Learning Resources</h2>
+    <div class="resource-grid" style="margin-bottom: 60px;">
+        <div class="resource-card">
+            <span class="category-tag">Health Facts</span>
+            <h4>WHO: Gaming Disorder</h4>
+            <p>Learn about the official classification and symptoms of gaming disorder according to World Health Organization.</p>
+            <a href="https://www.who.int/standards/classifications/frequently-asked-questions/gaming-disorder" target="_blank" class="resource-link">Read WHO Facts</a>
+        </div>
+        <div class="resource-card">
+            <span class="category-tag">Digital Health</span>
+            <h4>Healthline: Balance</h4>
+            <p>Scientific advice on how to maintain physical health and posture while gaming for long periods.</p>
+            <a href="https://www.healthline.com/health/video-game-addiction" target="_blank" class="resource-link">View Health Guide</a>
+        </div>
+        <div class="resource-card">
+            <span class="category-tag">Cyber Privacy</span>
+            <h4>Security Awareness</h4>
+            <p>Learn how to secure your Steam, Epic, and Discord accounts using Two-Factor Authentication (2FA).</p>
+            <a href="https://www.staysafeonline.org" target="_blank" class="resource-link">Privacy Tips</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Impact of Gaming on Youth Initiative</p>
+</footer>
+
+<script>
+    lucide.createIcons();
+</script>
+</body>
+</html>
