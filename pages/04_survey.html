@@ -10,8 +10,6 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
-/* Extra styles only for Survey page */
-
 .hero-survey {
   padding: 120px 10% 60px;
   text-align: center;
@@ -25,12 +23,6 @@
 
 .section-dark {
   background: var(--bg-dark);
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
   padding: 80px 10%;
 }
 
@@ -39,7 +31,8 @@
   border: 1px solid var(--border);
   padding: 2rem;
   border-radius: 20px;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem auto;
+  max-width: 750px; /* width controlled */
 }
 
 .poll button {
@@ -72,6 +65,9 @@ iframe {
   border: none;
   border-radius: 20px;
   background: var(--glass);
+  max-width: 900px;
+  display: block;
+  margin: auto;
 }
 </style>
 </head>
@@ -99,7 +95,6 @@ iframe {
 
 <main class="section">
 
-<!-- HERO -->
 <header class="hero-survey">
   <p style="color:var(--accent-soft); letter-spacing:2px; font-weight:600;">PARTICIPANT INPUT</p>
   <h2>Youth Gaming Survey</h2>
@@ -116,7 +111,6 @@ iframe {
       Please answer honestly. Responses are anonymous and used only for academic analysis.
     </p>
 
-    <!-- 🔗 Replace this src -->
     <iframe 
       src="https://docs.google.com/forms/d/e/1FAIpQLSeAOCxhPCViXZX2x4OUGQxAcIl8zaaXxD_u6N8GNP26Z5OWDw/viewform?embedded=true">
     </iframe>
@@ -124,25 +118,82 @@ iframe {
   </div>
 </section>
 
-<!-- QUICK POLLS -->
+<!-- QUICK QUESTIONS -->
 <section class="section-dark" style="margin-top:60px;">
-  <h3 style="text-align:center; color:var(--accent-soft);">Quick Polls</h3>
+  <h3 style="text-align:center; color:var(--accent-soft);">Quick Questions</h3>
+
+  <!-- 10 Polls -->
 
   <div class="poll">
-    <h4>How many hours do you game daily?</h4>
-    <button onclick="vote('hours',0)">Less than 1 hour</button>
-    <button onclick="vote('hours',1)">1–3 hours</button>
-    <button onclick="vote('hours',2)">3–5 hours</button>
-    <button onclick="vote('hours',3)">More than 5 hours</button>
-    <div class="poll-result" id="hours-result"></div>
+    <h4>1. How many hours do you game daily?</h4>
+    <button onclick="vote('q1',0)">Less than 1 hour</button>
+    <button onclick="vote('q1',1)">1–3 hours</button>
+    <button onclick="vote('q1',2)">More than 3 hours</button>
+    <div class="poll-result" id="q1-result"></div>
   </div>
 
   <div class="poll">
-    <h4>Does gaming affect your studies?</h4>
-    <button onclick="vote('study',0)">Improves focus</button>
-    <button onclick="vote('study',1)">No effect</button>
-    <button onclick="vote('study',2)">Reduces focus</button>
-    <div class="poll-result" id="study-result"></div>
+    <h4>2. Does gaming affect your studies?</h4>
+    <button onclick="vote('q2',0)">Yes</button>
+    <button onclick="vote('q2',1)">No</button>
+    <div class="poll-result" id="q2-result"></div>
+  </div>
+
+  <div class="poll">
+    <h4>3. Do you play before sleeping?</h4>
+    <button onclick="vote('q3',0)">Often</button>
+    <button onclick="vote('q3',1)">Sometimes</button>
+    <button onclick="vote('q3',2)">Never</button>
+    <div class="poll-result" id="q3-result"></div>
+  </div>
+
+  <div class="poll">
+    <h4>4. Do your parents limit your gaming time?</h4>
+    <button onclick="vote('q4',0)">Yes</button>
+    <button onclick="vote('q4',1)">No</button>
+    <div class="poll-result" id="q4-result"></div>
+  </div>
+
+  <div class="poll">
+    <h4>5. Do you feel stressed when not gaming?</h4>
+    <button onclick="vote('q5',0)">Yes</button>
+    <button onclick="vote('q5',1)">No</button>
+    <div class="poll-result" id="q5-result"></div>
+  </div>
+
+  <div class="poll">
+    <h4>6. Has gaming improved your skills?</h4>
+    <button onclick="vote('q6',0)">Yes</button>
+    <button onclick="vote('q6',1)">No</button>
+    <div class="poll-result" id="q6-result"></div>
+  </div>
+
+  <div class="poll">
+    <h4>7. Do you prefer online or offline games?</h4>
+    <button onclick="vote('q7',0)">Online</button>
+    <button onclick="vote('q7',1)">Offline</button>
+    <div class="poll-result" id="q7-result"></div>
+  </div>
+
+  <div class="poll">
+    <h4>8. Does gaming affect your sleep?</h4>
+    <button onclick="vote('q8',0)">Yes</button>
+    <button onclick="vote('q8',1)">No</button>
+    <div class="poll-result" id="q8-result"></div>
+  </div>
+
+  <div class="poll">
+    <h4>9. Do you balance gaming with outdoor activities?</h4>
+    <button onclick="vote('q9',0)">Yes</button>
+    <button onclick="vote('q9',1)">No</button>
+    <div class="poll-result" id="q9-result"></div>
+  </div>
+
+  <div class="poll">
+    <h4>10. Should gaming time be regulated for students?</h4>
+    <button onclick="vote('q10',0)">Yes</button>
+    <button onclick="vote('q10',1)">No</button>
+    <div class="poll-result" id="q10-result"></div>
   </div>
 
 </section>
@@ -156,23 +207,31 @@ iframe {
 <script>
 lucide.createIcons();
 
-/* Poll Logic (Local – no backend) */
+/* Poll Logic */
 const polls = {
-  hours: [0,0,0,0],
-  study: [0,0,0]
+  q1:[0,0,0],
+  q2:[0,0],
+  q3:[0,0,0],
+  q4:[0,0],
+  q5:[0,0],
+  q6:[0,0],
+  q7:[0,0],
+  q8:[0,0],
+  q9:[0,0],
+  q10:[0,0]
 };
 
-function vote(poll, option) {
+function vote(poll, option){
   polls[poll][option]++;
   const total = polls[poll].reduce((a,b)=>a+b,0);
 
-  let text = "Results: ";
+  let result = "Results: ";
   polls[poll].forEach((v,i)=>{
     const percent = ((v/total)*100 || 0).toFixed(0);
-    text += `Option ${i+1}: ${percent}%  `;
+    result += `Option ${i+1}: ${percent}%  `;
   });
 
-  document.getElementById(poll + "-result").innerText = text;
+  document.getElementById(poll + "-result").innerText = result;
 }
 </script>
 

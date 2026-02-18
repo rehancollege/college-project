@@ -1,289 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming Impact | AI Chat</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impact of Gaming on Youth | Research & Awareness</title>
 
-    <link rel="stylesheet" href="../css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        /* ENHANCED CHAT STYLES */
-        .chat-container {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 2rem;
-            align-items: start;
-        }
+<style>
+/* =========================
+   ROOT VARIABLES
+========================= */
+:root{
+  --bg-main:#020617;
+  --bg-card:#0f172a;
+  --glass:rgba(255,255,255,0.08);
+  --accent:#6366f1;
+  --accent-soft:#22d3ee;
+  --text-main:#e5e7eb;
+  --text-soft:#94a3b8;
+}
 
-        .chat-toggle {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-            z-index: 1001;
-        }
+/* =========================
+   GLOBAL STYLES
+========================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
 
-        .chat-toggle:hover { transform: scale(1.05); }
+body{
+  background:linear-gradient(135deg,#020617,#020617,#020617);
+  color:var(--text-main);
+  line-height:1.6;
+}
 
-        .chatbox {
-            display: none;
-            position: fixed;
-            bottom: 95px;
-            right: 25px;
-            width: 380px;
-            max-width: 90vw;
-            height: 500px;
-            background: #0f172a; /* Solid dark background */
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-            flex-direction: column;
-            z-index: 1000;
-        }
+/* =========================
+   HEADER
+========================= */
+header{
+  padding:30px 8%;
+  border-bottom:1px solid var(--glass);
+}
 
-        .chat-header {
-            padding: 20px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
-            font-weight: 700;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+header h1{
+  font-size:2.5rem;
+  color:var(--accent-soft);
+}
 
-        .chat-area {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            background: rgba(2, 6, 23, 0.5);
-        }
+header p{
+  color:var(--text-soft);
+  max-width:700px;
+  margin-top:10px;
+}
 
-        /* Message Bubbles */
-        .msg {
-            max-width: 80%;
-            padding: 10px 15px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-        .bot-msg {
-            align-self: flex-start;
-            background: var(--glass);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            border-bottom-left-radius: 2px;
-        }
-        .user-msg {
-            align-self: flex-end;
-            background: var(--accent);
-            color: white;
-            border-bottom-right-radius: 2px;
-        }
+/* =========================
+   MAIN SECTION
+========================= */
+main{
+  padding:50px 8%;
+}
 
-        .chat-input {
-            display: flex;
-            padding: 15px;
-            background: var(--bg-dark);
-            border-top: 1px solid var(--border);
-            gap: 10px;
-        }
+.section-title{
+  font-size:2.2rem;
+  margin-bottom:30px;
+  color:var(--accent-soft);
+}
 
-        .chat-input input {
-            flex: 1;
-            padding: 12px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            color: white;
-            outline: none;
-        }
+/* =========================
+   CARDS
+========================= */
+.card{
+  background:var(--glass);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;
+  padding:25px;
+  margin-bottom:20px;
+  backdrop-filter:blur(12px);
+  transition:0.3s ease;
+}
 
-        .suggestion-chips {
-            padding: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            background: var(--bg-dark);
-        }
+.card:hover{
+  transform:translateY(-4px);
+  border-color:var(--accent);
+}
 
-        .chip {
-            font-size: 0.75rem;
-            padding: 5px 12px;
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+.card h4{
+  color:var(--accent);
+  margin-bottom:10px;
+}
 
-        .chip:hover { border-color: var(--accent-soft); color: var(--accent-soft); }
+/* =========================
+   CHATBOT BUTTON
+========================= */
+.chatbot-btn{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-soft));
+  color:#020617;
+  border:none;
+  border-radius:50px;
+  padding:15px 22px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 0 25px rgba(99,102,241,0.6);
+}
 
-        @media (max-width: 768px) {
-            .chat-container { grid-template-columns: 1fr; }
-        }
-    </style>
+/* =========================
+   CHATBOT WINDOW
+========================= */
+.chatbot{
+  position:fixed;
+  bottom:90px;
+  right:25px;
+  width:320px;
+  background:var(--bg-card);
+  border-radius:16px;
+  display:none;
+  overflow:hidden;
+  box-shadow:0 0 30px rgba(0,0,0,0.6);
+}
+
+.chatbot-header{
+  background:var(--accent);
+  color:#020617;
+  padding:12px;
+  font-weight:600;
+}
+
+.chatbot-body{
+  padding:15px;
+  height:200px;
+  overflow-y:auto;
+  font-size:0.9rem;
+}
+
+.chatbot-input{
+  display:flex;
+  border-top:1px solid var(--glass);
+}
+
+.chatbot-input input{
+  flex:1;
+  background:transparent;
+  border:none;
+  padding:10px;
+  color:#fff;
+}
+
+.chatbot-input button{
+  background:var(--accent-soft);
+  border:none;
+  padding:10px 15px;
+  cursor:pointer;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer{
+  text-align:center;
+  padding:20px;
+  color:var(--text-soft);
+  border-top:1px solid var(--glass);
+}
+</style>
 </head>
 
 <body>
 
-<nav class="navbar">
-    <a href="../index.html" class="nav-logo">
-        <i data-lucide="gamepad-2" style="color: var(--accent-soft); margin-right: 10px;"></i>
-        <h1>Impact of Gaming</h1>
-    </a>
-    <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="02_research.html">Research</a></li>
-        <li><a href="03_awareness.html">Tips</a></li>
-        <li><a href="04_survey.html">Survey</a></li>
-        <li><a href="05_gallery.html">Gallery</a></li>
-        <li><a href="06_chatbot.html" class="active">AI Chat</a></li>
-        <li><a href="07_forum.html">Forum</a></li>
-        <li><a href="08_resources.html">Resources</a></li>
-        <li><a href="09_contact.html">Contact</a></li>
-    </ul>
-</nav>
+<header>
+  <h1>Impact of Gaming on Youth</h1>
+  <p>
+    A research-based awareness platform highlighting the psychological,
+    academic, and social effects of gaming on young individuals.
+  </p>
+</header>
 
-<main class="section" style="margin-top:120px;">
-    <div class="chat-container">
-        <div>
-            <h2 style="color:var(--accent-soft); font-size: 2.5rem; margin-bottom: 20px;">Digital Wellness Hub</h2>
-            <div class="card" style="margin-bottom: 20px;">
-                <p style="margin-bottom: 15px;">Welcome to the interactive support module. Our AI-driven assistant is designed to help you navigate the balance between high-performance gaming and personal health.</p>
-                <ul style="color: var(--text-muted); padding-left: 20px;">
-                    <li>Personalized screen-time advice</li>
-                    <li>Scientific tips for better sleep quality</li>
-                    <li>Guidance on recognizing gaming fatigue</li>
-                </ul>
-            </div>
-            <div class="grid">
-                <div class="card">
-                    <i data-lucide="shield-check" style="color: var(--accent-soft);"></i>
-                    <h4>Confidential</h4>
-                    <p>Your chat history is local and private.</p>
-                </div>
-                <div class="card">
-                    <i data-lucide="zap" style="color: var(--accent-soft);"></i>
-                    <h4>Instant Advice</h4>
-                    <p>Get immediate responses for wellness tips.</p>
-                </div>
-            </div>
-        </div>
+<main>
+  <h2 class="section-title">Frequently Asked Questions (FAQs)</h2>
 
-        <aside>
-            <h4 style="margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Quick Stats</h4>
-            <div class="card" style="padding: 15px; font-size: 0.85rem;">
-                <p><b>20-20-20 Rule:</b> Every 20 mins, look 20 feet away for 20 seconds.</p>
-                <hr style="margin: 10px 0; border: 0; border-top: 1px solid var(--border);">
-                <p><b>Blue Light:</b> Exposure 1 hour before bed reduces sleep quality by 30%.</p>
-            </div>
-        </aside>
-    </div>
+  <div class="card">
+    <h4>1. What is digital wellness?</h4>
+    <p>Digital wellness means maintaining a healthy balance between technology use
+       and physical, mental, and emotional well-being.</p>
+  </div>
+
+  <div class="card">
+    <h4>2. How much gaming is considered safe?</h4>
+    <p>1–2 hours per day is generally considered safe for students if studies,
+       sleep, and physical activity are not affected.</p>
+  </div>
+
+  <div class="card">
+    <h4>3. Can gaming affect academic performance?</h4>
+    <p>Yes, excessive gaming can reduce focus, study time, and sleep quality,
+       leading to poor academic outcomes.</p>
+  </div>
+
+  <div class="card">
+    <h4>4. Does gaming impact mental health?</h4>
+    <p>Overuse of games may increase stress, anxiety, and social isolation in some individuals.</p>
+  </div>
+
+  <div class="card">
+    <h4>5. Are there positive effects of gaming?</h4>
+    <p>Yes. Moderate gaming can improve problem-solving skills, coordination,
+       and teamwork.</p>
+  </div>
+
+  <div class="card">
+    <h4>6. How does gaming affect sleep?</h4>
+    <p>Late-night gaming can disturb sleep cycles, leading to fatigue and reduced concentration.</p>
+  </div>
+
+  <div class="card">
+    <h4>7. What are signs of gaming addiction?</h4>
+    <p>Loss of control, neglecting responsibilities, irritability, and reduced social interaction.</p>
+  </div>
+
+  <div class="card">
+    <h4>8. Can parents control gaming habits?</h4>
+    <p>Yes. Setting time limits and encouraging outdoor activities helps maintain balance.</p>
+  </div>
+
+  <div class="card">
+    <h4>9. Is online gaming safe for youth?</h4>
+    <p>With proper supervision and privacy settings, online gaming can be safe.</p>
+  </div>
+
+  <div class="card">
+    <h4>10. How can students maintain healthy gaming habits?</h4>
+    <p>By following schedules, taking breaks, and prioritizing studies and health.</p>
+  </div>
 </main>
 
-<button class="chat-toggle" onclick="toggleChat()">
-    <i data-lucide="message-circle"></i> Chat with Wellness Bot
-</button>
+<!-- CHATBOT -->
+<button class="chatbot-btn" onclick="toggleChat()">💬 Chatbot</button>
 
-<div class="chatbox" id="chatBox">
-    <div class="chat-header">
-        <span>Wellness Assistant</span>
-        <i data-lucide="x" style="cursor:pointer;" onclick="toggleChat()"></i>
-    </div>
-
-    <div class="chat-area" id="chatArea">
-        <div class="msg bot-msg">
-            Hi! I'm your Digital Wellness Assistant. How can I help you balance your gaming life today?
-        </div>
-    </div>
-
-    <div class="suggestion-chips">
-        <div class="chip" onclick="quickAsk('Better Sleep')">Better Sleep</div>
-        <div class="chip" onclick="quickAsk('Eye Strain')">Eye Strain</div>
-        <div class="chip" onclick="quickAsk('Gaming Limits')">Gaming Limits</div>
-        <div class="chip" onclick="quickAsk('Burnout')">Burnout</div>
-    </div>
-
-    <div class="chat-input">
-        <input type="text" id="userMsg" placeholder="Ask about sleep, stress, health..." onkeypress="handleEnter(event)">
-        <button onclick="sendMsg()"><i data-lucide="send"></i></button>
-    </div>
+<div class="chatbot" id="chatbot">
+  <div class="chatbot-header">Gaming Awareness Bot</div>
+  <div class="chatbot-body" id="chatBody">
+    <p><strong>Bot:</strong> Hello! Ask me about gaming and youth well-being.</p>
+  </div>
+  <div class="chatbot-input">
+    <input type="text" id="chatInput" placeholder="Type a question...">
+    <button onclick="sendMsg()">Send</button>
+  </div>
 </div>
 
 <footer>
-    <p>© 2026 Impact of Gaming on Youth Initiative</p>
+  © 2026 | Research Project: Impact of Gaming on Youth
 </footer>
 
 <script>
-    lucide.createIcons();
+function toggleChat(){
+  const bot=document.getElementById("chatbot");
+  bot.style.display=bot.style.display==="block"?"none":"block";
+}
 
-    function toggleChat() {
-        const chat = document.getElementById("chatBox");
-        chat.style.display = (chat.style.display === "none" || chat.style.display === "") ? "flex" : "none";
-    }
+function sendMsg(){
+  const input=document.getElementById("chatInput");
+  const chat=document.getElementById("chatBody");
+  if(input.value.trim()==="") return;
 
-    function handleEnter(e) {
-        if (e.key === 'Enter') sendMsg();
-    }
-
-    function quickAsk(topic) {
-        document.getElementById("userMsg").value = topic;
-        sendMsg();
-    }
-
-    function sendMsg() {
-        const input = document.getElementById("userMsg");
-        const msgText = input.value.trim();
-        if (msgText === "") return;
-
-        const chatArea = document.getElementById("chatArea");
-        
-        // Add User Message
-        chatArea.innerHTML += `<div class="msg user-msg">${msgText}</div>`;
-        input.value = "";
-
-        // Determine Bot Reply
-        let reply = "I'm here to support your digital health. Try asking about sleep, eye strain, or daily limits.";
-        const lowMsg = msgText.toLowerCase();
-
-        if (lowMsg.includes("sleep")) {
-            reply = "To improve sleep, try the 'No-Screens' rule 1 hour before bed. Blue light blocks melatonin, making it harder to drift off.";
-        } else if (lowMsg.includes("eye") || lowMsg.includes("strain")) {
-            reply = "Use the 20-20-20 rule: Every 20 minutes, look at something 20 feet away for 20 seconds to relax your eye muscles.";
-        } else if (lowMsg.includes("limit") || lowMsg.includes("addiction")) {
-            reply = "Setting a 'Hard Stop' time each night is key. Start by reducing sessions by 30 minutes each week until you hit your goal.";
-        } else if (lowMsg.includes("burnout") || lowMsg.includes("stress")) {
-            reply = "Gaming should be fun! If you're feeling tilted or stressed, take a 15-minute walk. Physical movement lowers cortisol levels.";
-        } else if (lowMsg.includes("hello") || lowMsg.includes("hi")) {
-            reply = "Hello! I'm ready to help. What's on your mind regarding your gaming habits?";
-        }
-
-        // Add Bot Message with slight delay
-        setTimeout(() => {
-            chatArea.innerHTML += `<div class="msg bot-msg">${reply}</div>`;
-            chatArea.scrollTop = chatArea.scrollHeight;
-        }, 500);
-
-        chatArea.scrollTop = chatArea.scrollHeight;
-    }
+  chat.innerHTML+=`<p><strong>You:</strong> ${input.value}</p>`;
+  chat.innerHTML+=`<p><strong>Bot:</strong> Balanced gaming helps maintain mental and academic health.</p>`;
+  chat.scrollTop=chat.scrollHeight;
+  input.value="";
+}
 </script>
 
 </body>

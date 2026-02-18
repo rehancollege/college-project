@@ -83,7 +83,7 @@ body {
   position: absolute;
   z-index: 1;
   background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
-  animation: spin 2.5s linear infinite;
+  animation: spin 2.5s linear infinite; 
 }
 
 .navbar ul li:hover::before {

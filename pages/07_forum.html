@@ -1,13 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming Impact | [Page Name]</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaming Impact | Forum</title>
+
+<link rel="stylesheet" href="../css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+
+/* Forum Specific Styling */
+
+.forum-container{
+    max-width:800px;
+    margin:auto;
+}
+
+.forum-title{
+    font-size:2rem;
+    color:var(--accent-soft);
+    margin-bottom:10px;
+}
+
+.forum-subtitle{
+    color:var(--text-soft);
+    margin-bottom:30px;
+}
+
+.forum-form input,
+.forum-form textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border-radius:8px;
+    border:1px solid var(--glass);
+    background:rgba(255,255,255,0.05);
+    color:var(--text-main);
+    font-family:'Inter',sans-serif;
+}
+
+.forum-form input:focus,
+.forum-form textarea:focus{
+    outline:none;
+    border-color:var(--accent);
+}
+
+.forum-form button{
+    background:linear-gradient(135deg,var(--accent),var(--accent-soft));
+    border:none;
+    padding:12px 18px;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+    color:#020617;
+    transition:0.3s;
+}
+
+.forum-form button:hover{
+    opacity:0.9;
+}
+
+.forum-post{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:15px;
+    animation:fadeIn 0.3s ease;
+}
+
+.forum-post strong{
+    color:var(--accent-soft);
+}
+
+.post-time{
+    font-size:0.8rem;
+    color:var(--text-soft);
+    margin-top:5px;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(5px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+</style>
 </head>
+
 <body>
 
 <nav class="navbar">
@@ -29,9 +110,39 @@
 </nav>
 
 <section class="section" style="margin-top: 100px;">
-    <h3>Forum</h3>
-    <div class="card">
-        <p>Content for this section will go here. You can now test if the navigation works by clicking the links above!</p>
+    <div class="forum-container">
+
+        <h3 class="forum-title">Share Experiences / Ask Questions</h3>
+        <p class="forum-subtitle">
+            This is a safe space to discuss how gaming affects students. 
+            Share your experiences, ask questions, and learn from others.
+        </p>
+
+        <div class="card">
+
+            <form id="forumForm" class="forum-form">
+                <input type="text" id="username" placeholder="Your Name" required>
+                <textarea id="message" rows="4" placeholder="Share your experience or ask a question..." required></textarea>
+                <button type="submit">Post Message</button>
+            </form>
+
+            <hr style="margin:30px 0; border-color: var(--glass);">
+
+            <div id="forumPosts">
+                <!-- Posts appear here -->
+            </div>
+
+            <hr style="margin:30px 0; border-color: var(--glass);">
+
+            <div style="text-align:center;">
+                <a href="https://rehancepimpactofgaming.blogspot.com/2026/02/impact-of-gaming-on-youth.html" 
+                   target="_blank" 
+                   style="color: var(--accent); font-weight: 600;">
+                   Read more on our Blogger: Impact of Gaming on Youth
+                </a>
+            </div>
+
+        </div>
     </div>
 </section>
 
@@ -40,7 +151,48 @@
 </footer>
 
 <script>
-    lucide.createIcons();
+lucide.createIcons();
+
+const forumForm = document.getElementById('forumForm');
+const forumPosts = document.getElementById('forumPosts');
+
+forumForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!username || !message) return;
+
+    const postDiv = document.createElement('div');
+    postDiv.className = 'forum-post';
+
+    const time = new Date().toLocaleString();
+
+    postDiv.innerHTML = `
+        <strong>${escapeHTML(username)}</strong>
+        <p>${escapeHTML(message)}</p>
+        <div class="post-time">${time}</div>
+    `;
+
+    forumPosts.prepend(postDiv);
+    forumForm.reset();
+});
+
+/* Prevent HTML injection */
+function escapeHTML(str){
+    return str.replace(/[&<>"']/g, function(match){
+        const escape = {
+            '&':'&amp;',
+            '<':'&lt;',
+            '>':'&gt;',
+            '"':'&quot;',
+            "'":'&#039;'
+        };
+        return escape[match];
+    });
+}
 </script>
+
 </body>
 </html>
