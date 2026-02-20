@@ -4,86 +4,112 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gaming Impact | Forum</title>
-
 <link rel="stylesheet" href="../css/style.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
 
-/* Forum Specific Styling */
+/* ===== GLOBAL STYLING ===== */
+
+
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg-dark);
+    color:var(--text-main);
+}
+
+/* ===== NAVBAR ===== */
+
+
+
+
+
+
+.navbar ul li a{
+    text-decoration:none;
+    color:var(--text-soft);
+    font-weight:500;
+    transition:0.3s;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active{
+    color:var(--accent);
+}
+
+/* ===== SECTION ===== */
+
+.section{
+    padding:120px 20px 60px 20px;
+}
 
 .forum-container{
-    max-width:800px;
+    max-width:900px;
     margin:auto;
 }
 
 .forum-title{
-    font-size:2rem;
+    font-size:2.2rem;
     color:var(--accent-soft);
     margin-bottom:10px;
+    text-align:center;
 }
 
 .forum-subtitle{
     color:var(--text-soft);
     margin-bottom:30px;
+    text-align:center;
 }
 
-.forum-form input,
-.forum-form textarea{
-    width:100%;
-    padding:12px;
-    margin-bottom:15px;
-    border-radius:8px;
+/* ===== CARD ===== */
+
+.card{
+    background:var(--card-bg);
+    padding:30px;
+    border-radius:16px;
     border:1px solid var(--glass);
-    background:rgba(255,255,255,0.05);
-    color:var(--text-main);
-    font-family:'Inter',sans-serif;
+    box-shadow:0 15px 35px rgba(0,0,0,0.4);
 }
 
-.forum-form input:focus,
-.forum-form textarea:focus{
-    outline:none;
-    border-color:var(--accent);
-}
+/* ===== BLOGGER EMBED ===== */
 
-.forum-form button{
-    background:linear-gradient(135deg,var(--accent),var(--accent-soft));
+.blogger-frame{
+    width:100%;
+    height:900px;
     border:none;
-    padding:12px 18px;
-    border-radius:8px;
-    font-weight:600;
-    cursor:pointer;
-    color:#020617;
-    transition:0.3s;
-}
-
-.forum-form button:hover{
-    opacity:0.9;
-}
-
-.forum-post{
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.1);
-    padding:15px;
     border-radius:12px;
-    margin-bottom:15px;
-    animation:fadeIn 0.3s ease;
+    background:white;
 }
 
-.forum-post strong{
-    color:var(--accent-soft);
-}
+/* ===== FOOTER ===== */
 
-.post-time{
-    font-size:0.8rem;
+footer{
+    text-align:center;
+    padding:25px;
+    border-top:1px solid var(--glass);
     color:var(--text-soft);
-    margin-top:5px;
+    margin-top:40px;
 }
 
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(5px);}
-    to{opacity:1; transform:translateY(0);}
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:768px){
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .navbar ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .blogger-frame{
+        height:800px;
+    }
 }
 
 </style>
@@ -92,57 +118,42 @@
 <body>
 
 <nav class="navbar">
-    <a href="../index.html" class="nav-logo">
-        <i data-lucide="gamepad-2" style="color: var(--accent-soft); margin-right: 10px;"></i>
-        <h1>Impact of Gaming</h1>
-    </a>
-    <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="02_research.html">Research</a></li>
-        <li><a href="03_awareness.html">Tips</a></li>
-        <li><a href="04_survey.html">Survey</a></li>
-        <li><a href="05_gallery.html">Gallery</a></li>
-        <li><a href="06_chatbot.html">AI Chat</a></li>
-        <li><a href="07_forum.html" class="active">Forum</a></li>
-        <li><a href="08_resources.html">Resources</a></li>
-        <li><a href="09_contact.html">Contact</a></li>
-    </ul>
+  <a href="../index.html" class="nav-logo">
+    <i data-lucide="gamepad-2" style="color: var(--accent-soft); margin-right: 10px;"></i>
+    <h1>Impact of Gaming</h1>
+  </a>
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="02_research.html">Research</a></li>
+    <li><a href="03_awareness.html">Tips</a></li>
+    <li><a href="04_survey.html">Survey</a></li>
+    <li><a href="05_gallery.html">Gallery</a></li>
+    <li><a href="06_chatbot.html">AI Chat</a></li>
+    <li><a href="07_forum.html" class="active">Forum</a></li>
+    <li><a href="08_resources.html">Resources</a></li>
+    <li><a href="09_contact.html">Contact</a></li>
+  </ul>
 </nav>
 
-<section class="section" style="margin-top: 100px;">
+<section class="section">
     <div class="forum-container">
 
-        <h3 class="forum-title">Share Experiences / Ask Questions</h3>
+        <h2 class="forum-title">Community Discussion Forum</h2>
         <p class="forum-subtitle">
-            This is a safe space to discuss how gaming affects students. 
-            Share your experiences, ask questions, and learn from others.
+            Share your experiences and discuss how gaming impacts youth.
+            All discussions are publicly visible and moderated.
         </p>
 
         <div class="card">
 
-            <form id="forumForm" class="forum-form">
-                <input type="text" id="username" placeholder="Your Name" required>
-                <textarea id="message" rows="4" placeholder="Share your experience or ask a question..." required></textarea>
-                <button type="submit">Post Message</button>
-            </form>
-
-            <hr style="margin:30px 0; border-color: var(--glass);">
-
-            <div id="forumPosts">
-                <!-- Posts appear here -->
-            </div>
-
-            <hr style="margin:30px 0; border-color: var(--glass);">
-
-            <div style="text-align:center;">
-                <a href="https://rehancepimpactofgaming.blogspot.com/2026/02/impact-of-gaming-on-youth.html" 
-                   target="_blank" 
-                   style="color: var(--accent); font-weight: 600;">
-                   Read more on our Blogger: Impact of Gaming on Youth
-                </a>
-            </div>
+            <!-- Blogger Post + Comment Section Embedded -->
+            <iframe 
+                class="blogger-frame"
+                src="https://rehancepimpactofgaming.blogspot.com/2026/02/impact-of-gaming-on-youth.html">
+            </iframe>
 
         </div>
+
     </div>
 </section>
 
@@ -152,46 +163,6 @@
 
 <script>
 lucide.createIcons();
-
-const forumForm = document.getElementById('forumForm');
-const forumPosts = document.getElementById('forumPosts');
-
-forumForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const username = document.getElementById('username').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    if (!username || !message) return;
-
-    const postDiv = document.createElement('div');
-    postDiv.className = 'forum-post';
-
-    const time = new Date().toLocaleString();
-
-    postDiv.innerHTML = `
-        <strong>${escapeHTML(username)}</strong>
-        <p>${escapeHTML(message)}</p>
-        <div class="post-time">${time}</div>
-    `;
-
-    forumPosts.prepend(postDiv);
-    forumForm.reset();
-});
-
-/* Prevent HTML injection */
-function escapeHTML(str){
-    return str.replace(/[&<>"']/g, function(match){
-        const escape = {
-            '&':'&amp;',
-            '<':'&lt;',
-            '>':'&gt;',
-            '"':'&quot;',
-            "'":'&#039;'
-        };
-        return escape[match];
-    });
-}
 </script>
 
 </body>
