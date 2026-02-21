@@ -91,7 +91,15 @@
         <i data-lucide="gamepad-2" style="color: var(--accent-soft); margin-right: 10px;"></i>
         <h1>Impact of Gaming</h1>
     </a>
-    <ul>
+
+    <!-- Hamburger Button -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul id="nav-links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="02_research.html">Research</a></li>
         <li><a href="03_awareness.html">Tips</a></li>
@@ -132,13 +140,13 @@
             <span class="category-tag">24/7 Mental Health</span>
             <h4>Tele-MANAS</h4>
             <p>Free, confidential mental health support provided by the Government of India. Available 24/7.</p>
-            <a href="tel:14416" class="resource-link">Call 14416 Now</a>
+            <a href="https://telemanas.mohfw.gov.in/home" target="_blank" class="resource-link">Call 14416 Now</a>
         </div>
         <div class="resource-card helpline-box">
             <span class="category-tag">Youth Safety</span>
             <h4>Childline India</h4>
             <p>Emergency assistance for children and teenagers facing online harassment or addiction issues.</p>
-            <a href="tel:1098" class="resource-link">Call 1098 Now</a>
+            <a href="https://childlineindia.org/a/about/childline-india" target="_blank" class="resource-link">Visit Childline Website</a>
         </div>
     </div>
 
@@ -172,5 +180,6 @@
 <script>
     lucide.createIcons();
 </script>
+<script src="../js/script.js"></script>
 </body>
 </html>

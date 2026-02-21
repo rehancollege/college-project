@@ -96,21 +96,7 @@ footer{
 
 /* ===== RESPONSIVE ===== */
 
-@media(max-width:768px){
-    .navbar{
-        flex-direction:column;
-        gap:15px;
-    }
 
-    .navbar ul{
-        flex-wrap:wrap;
-        justify-content:center;
-    }
-
-    .blogger-frame{
-        height:800px;
-    }
-}
 
 </style>
 </head>
@@ -118,21 +104,29 @@ footer{
 <body>
 
 <nav class="navbar">
-  <a href="../index.html" class="nav-logo">
-    <i data-lucide="gamepad-2" style="color: var(--accent-soft); margin-right: 10px;"></i>
-    <h1>Impact of Gaming</h1>
-  </a>
-  <ul>
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="02_research.html">Research</a></li>
-    <li><a href="03_awareness.html">Tips</a></li>
-    <li><a href="04_survey.html">Survey</a></li>
-    <li><a href="05_gallery.html">Gallery</a></li>
-    <li><a href="06_chatbot.html">AI Chat</a></li>
-    <li><a href="07_forum.html" class="active">Forum</a></li>
-    <li><a href="08_resources.html">Resources</a></li>
-    <li><a href="09_contact.html">Contact</a></li>
-  </ul>
+    <a href="../index.html" class="nav-logo">
+        <i data-lucide="gamepad-2" style="color: var(--accent-soft); margin-right: 10px;"></i>
+        <h1>Impact of Gaming</h1>
+    </a>
+
+    <!-- Hamburger Button -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul id="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="02_research.html">Research</a></li>
+        <li><a href="03_awareness.html">Tips</a></li>
+        <li><a href="04_survey.html">Survey</a></li>
+        <li><a href="05_gallery.html">Gallery</a></li>
+        <li><a href="06_chatbot.html">AI Chat</a></li>
+        <li><a href="07_forum.html" class="active">Forum</a></li>
+        <li><a href="08_resources.html">Resources</a></li>
+        <li><a href="09_contact.html">Contact</a></li>
+    </ul>
 </nav>
 
 <section class="section">
@@ -164,6 +158,6 @@ footer{
 <script>
 lucide.createIcons();
 </script>
-
+<script src="../js/script.js"></script>
 </body>
 </html>

@@ -110,7 +110,15 @@
         <i data-lucide="gamepad-2" style="color: var(--accent-soft); margin-right: 10px;"></i>
         <h1>Impact of Gaming</h1>
     </a>
-    <ul>
+
+    <!-- Hamburger Button -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul id="nav-links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="02_research.html">Research</a></li>
         <li><a href="03_awareness.html">Tips</a></li>
@@ -119,7 +127,7 @@
         <li><a href="06_chatbot.html">AI Chat</a></li>
         <li><a href="07_forum.html">Forum</a></li>
         <li><a href="08_resources.html">Resources</a></li>
-        <li><a href="09_contact.html" class="active">Contact</a></li>
+        <li><a href="09_contact.html"  class="active">Contact</a></li>
     </ul>
 </nav>
 
@@ -166,7 +174,7 @@
         <div class="card qr-card">
             <h4 style="color: var(--accent-soft); margin-bottom: 15px;">Scan for Portfolio</h4>
             <div class="qr-container">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rehancollege.github.io" alt="Portfolio QR Code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/rehangauri" alt="Portfolio QR Code">
             </div>
             <p style="font-size: 0.8rem; color: var(--text-muted);">Scan to see my other projects and technical achievements.</p>
         </div>
@@ -201,6 +209,6 @@
 <script>
     lucide.createIcons();
 </script>
-
+<script src="../js/script.js"></script>
 </body>
 </html>

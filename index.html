@@ -7,6 +7,45 @@
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+
+
+    <style>
+        .btn:hover::before, .btn:hover::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+            animation: spin 2.5s linear infinite; 
+        }
+
+        .btn:hover::before {
+            top: -2px; left: -2px; width: calc(100% + 4px); height: calc(100% + 4px);
+            border-radius: 10px;
+        }
+
+        .btn:hover::after{
+            top: 0; left: 0; width: 100%; height: 100%;
+            filter: blur(15px);
+        }
+
+
+
+.btn:hover::before,
+.btn:hover::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 12px;
+  background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+  animation: spin 2.5s linear infinite;
+  z-index: -1;
+}
+
+
+
+
+    </style>
+
 </head>
 <body>
 
@@ -15,7 +54,15 @@
         <i data-lucide="gamepad-2" style="color: var(--accent-soft); margin-right: 10px;"></i>
         <h1>Impact of Gaming</h1>
     </a>
-    <ul>
+
+    <!-- Hamburger Button -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul id="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="./pages/02_research.html">Research</a></li>
         <li><a href="./pages/03_awareness.html">Tips</a></li>
@@ -31,7 +78,7 @@
 <section class="hero">
     <div class="hero-content">
         <p style="color: var(--accent-soft); text-transform: uppercase; letter-spacing: 2px;">Academic Awareness Project</p>
-        <h2>Understanding the Digital Generation</h2>
+        <h2>Impact of Gaming on Youth</h2>
         <p style="max-width: 600px; margin: 0 auto 20px; color: var(--text-muted);">Exploring the deep psychological and social effects of gaming on today's youth.</p>
         <a href="./pages/02_research.html" class="btn btnLikeCard">Explore Research</a>
         <a href="./pages/03_awareness.html" class="btn secondary btnLikeCard">Get Tips</a>
@@ -89,5 +136,6 @@
 </footer>
 
 <script>lucide.createIcons();</script>
+<script src="./js/script.js"></script>
 </body>
 </html>

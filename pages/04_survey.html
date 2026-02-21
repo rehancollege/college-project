@@ -32,7 +32,7 @@
   padding: 2rem;
   border-radius: 20px;
   margin: 0 auto 2rem auto;
-  max-width: 750px; /* width controlled */
+  max-width: 750px;
 }
 
 .poll button {
@@ -74,24 +74,32 @@ iframe {
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
-  <a href="../index.html" class="nav-logo">
-    <i data-lucide="gamepad-2" style="color: var(--accent-soft); margin-right: 10px;"></i>
-    <h1>Impact of Gaming</h1>
-  </a>
-  <ul>
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="02_research.html">Research</a></li>
-    <li><a href="03_awareness.html">Tips</a></li>
-    <li><a href="04_survey.html" class="active">Survey</a></li>
-    <li><a href="05_gallery.html">Gallery</a></li>
-    <li><a href="06_chatbot.html">AI Chat</a></li>
-    <li><a href="07_forum.html">Forum</a></li>
-    <li><a href="08_resources.html">Resources</a></li>
-    <li><a href="09_contact.html">Contact</a></li>
-  </ul>
+    <a href="../index.html" class="nav-logo">
+        <i data-lucide="gamepad-2" style="color: var(--accent-soft); margin-right: 10px;"></i>
+        <h1>Impact of Gaming</h1>
+    </a>
+
+    <!-- Hamburger Button -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul id="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="02_research.html">Research</a></li>
+        <li><a href="03_awareness.html">Tips</a></li>
+        <li><a href="04_survey.html" class="active">Survey</a></li>
+        <li><a href="05_gallery.html">Gallery</a></li>
+        <li><a href="06_chatbot.html">AI Chat</a></li>
+        <li><a href="07_forum.html">Forum</a></li>
+        <li><a href="08_resources.html">Resources</a></li>
+        <li><a href="09_contact.html">Contact</a></li>
+    </ul>
 </nav>
+
 
 <main class="section">
 
@@ -103,26 +111,17 @@ iframe {
   </p>
 </header>
 
-<!-- GOOGLE FORM -->
 <section>
   <h3 style="color:var(--accent-soft); margin-bottom:1rem;">Detailed Survey Form</h3>
   <div class="card">
-    <p style="margin-bottom:1rem; color:var(--text-muted);">
-      Please answer honestly. Responses are anonymous and used only for academic analysis.
-    </p>
-
     <iframe 
       src="https://docs.google.com/forms/d/e/1FAIpQLSeAOCxhPCViXZX2x4OUGQxAcIl8zaaXxD_u6N8GNP26Z5OWDw/viewform?embedded=true">
     </iframe>
-
   </div>
 </section>
 
-<!-- QUICK QUESTIONS -->
 <section class="section-dark" style="margin-top:60px;">
   <h3 style="text-align:center; color:var(--accent-soft);">Quick Questions</h3>
-
-  <!-- 10 Polls -->
 
   <div class="poll">
     <h4>1. How many hours do you game daily?</h4>
@@ -139,7 +138,7 @@ iframe {
     <div class="poll-result" id="q2-result"></div>
   </div>
 
-  <div class="poll">
+    <div class="poll">
     <h4>3. Do you play before sleeping?</h4>
     <button onclick="vote('q3',0)">Often</button>
     <button onclick="vote('q3',1)">Sometimes</button>
@@ -207,8 +206,8 @@ iframe {
 <script>
 lucide.createIcons();
 
-/* Poll Logic */
-const polls = {
+/* Default Structure */
+const defaultPolls = {
   q1:[0,0,0],
   q2:[0,0],
   q3:[0,0,0],
@@ -221,19 +220,41 @@ const polls = {
   q10:[0,0]
 };
 
+/* Load from localStorage */
+let polls = JSON.parse(localStorage.getItem("gamingPolls")) || defaultPolls;
+
+/* Save */
+function savePolls(){
+  localStorage.setItem("gamingPolls", JSON.stringify(polls));
+}
+
+/* Vote */
 function vote(poll, option){
   polls[poll][option]++;
+  savePolls();
+  showResults(poll);
+}
+
+/* Show Results */
+function showResults(poll){
   const total = polls[poll].reduce((a,b)=>a+b,0);
 
   let result = "Results: ";
   polls[poll].forEach((v,i)=>{
-    const percent = ((v/total)*100 || 0).toFixed(0);
-    result += `Option ${i+1}: ${percent}%  `;
+    const percent = total ? ((v/total)*100).toFixed(0) : 0;
+    result += `Option ${i+1}: ${percent}%   `;
   });
 
   document.getElementById(poll + "-result").innerText = result;
 }
-</script>
 
+/* Show All On Load */
+window.onload = function(){
+  Object.keys(polls).forEach(poll=>{
+    showResults(poll);
+  });
+};
+</script>
+<script src="../js/script.js"></script>
 </body>
 </html>
